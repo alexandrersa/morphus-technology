@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY", "")
+SECRET_KEY = os.environ.get("SECRET_KEY", "secret")
 
 DEBUG = int(os.environ.get("DEBUG", default=1))
 
@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django_filters',
+    
+    'rest_framework',
+    'rest_framework.authtoken',
+
     'vulnerability',
 ]
 
@@ -122,3 +127,16 @@ USE_TZ = os.environ.get('USE_TZ', True)
 STATIC_URL = '/static/'
 # STATIC_URL = "/staticfiles/"
 # STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# Pagination for rest api.
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS':
+    ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 50
+
+}
