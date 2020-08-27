@@ -4,17 +4,33 @@
 
 ### Como executar
 
-Para iniciar o ambiente docker deve-se utilizar o comando:
+Inicialmente é dada a permissão de execução nos scripts de start, stop e restart com os comandos:
 
 ```
-$ docker-compose build up -d
+$ chmod +x start.sh
+$ chmod +x stop.sh
+$ chmod +x restart.sh
 ```
-Neste processo serão instaladas todas as dependências do projeto e ao final do processo estará disponível o serviço no endereço http://localhost:8000
 
-Agora que o serviço está up e executando pode ser executado o processo de importação das vulnerabilidades que encontra-se disponível na pasta csv-data. O script responsável por este processo encontra-se na pasta scripts com o nome import_vulnerability.py. Ele foi construído para em todas as suas execuções, a tabela Vulnerability seja apagada e preenchida novamente.
-
-Para executar deve-se utilizar o comando:
+Para iniciar o ambiente docker deve-se utilizar o comando abaixo, ao final será solicitada uma senha para o super usuário, após inserido já deve ser possível efetuar o login com as credenciais informadas.
 
 ```
-$ docker exec web python manage.py runscript import_vulnerability
+$ ./start.sh
 ```
+
+Para derrubar as instâncias deve-se utilizar o seguinte comando.
+
+```
+$ ./stop.sh
+```
+
+Caso deseje reiniciar a aplicação é necessário executar o comando de restart.
+
+```
+$ ./restart.sh
+```
+
+### Como Obter as credencias para requisição a API
+
+
+Com a posse das suas credenciais, então acesse http://localhost:8000/api/token/ para solicitar suas credenciais de acesso.
