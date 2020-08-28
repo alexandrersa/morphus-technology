@@ -8,7 +8,8 @@ docker-compose up --build -d
 
 docker exec web python manage.py makemigrations --noinput
 docker exec web python manage.py migrate --noinput
-
+docker exec -it web python manage.py makemigrations vulnerability
+docker exec -it web python manage.py migrate vulnerability
 # Import csv data
 docker exec web python manage.py runscript import_vulnerability
 
