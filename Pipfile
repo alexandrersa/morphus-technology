@@ -25,6 +25,7 @@ django-extensions = "*"
 djangorestframework = "*"
 django-filter = "*"
 djangorestframework-simplejwt = "*"
+djangorestframework-jwt = "*"
 
 [requires]
 python_version = "3.7"
